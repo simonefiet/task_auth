@@ -7,7 +7,7 @@ $confirmPassword = request()->get('confirm_password');
 
 if ($password != $confirmPassword) {
   $session->getFlashBag()->add('error', 'Passwords do NOT match');
-  redirect('/techdegree/task_auth/register.php');
+  redirect('/register.php');
 }
 
 $user = findUserByUsername($username);
@@ -20,6 +20,6 @@ $hashed = password_hash($password, PASSWORD_DEFAULT);
 $user = createUser($username, $hashed);
 saveUserSession($user);
 $session->getFlashBag()->add('success', 'User Added');
-redirect('/techdegree/task_auth/');
+redirect('/');
 
 ?>
