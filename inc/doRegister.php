@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ .'/bootstrap.php';
+require_once 'bootstrap.php';
 
 $username = request()->get('username');
 $password = request()->get('password');
@@ -7,7 +7,7 @@ $confirmPassword = request()->get('confirm_password');
 
 if ($password != $confirmPassword) {
   $session->getFlashBag()->add('error', 'Passwords do NOT match');
-  redirect('/register.php');
+  redirect('/techdegree/task_auth/register.php');
 }
 
 $user = findUserByUsername($username);
@@ -21,3 +21,5 @@ $user = createUser($username, $hashed);
 saveUserSession($user);
 $session->getFlashBag()->add('success', 'User Added');
 redirect('/techdegree/task_auth/');
+
+?>

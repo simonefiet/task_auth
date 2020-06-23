@@ -1,5 +1,6 @@
 <?php
 require_once 'inc/bootstrap.php';
+requireAuth();
 
 $pageTitle = "Task | Time Tracker";
 $page = "task";
@@ -17,6 +18,7 @@ include 'inc/header.php';
             <h1 class="actions-header"><?php
             if (!empty($task_id)) {
                 echo "Update";
+                
             } else {
                 echo "Add";
             }
