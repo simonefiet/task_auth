@@ -2,19 +2,7 @@
 /*
  * Functions to interface with `user` table
  */
-// function getAllUsers()
-// {
-//     global $db;
 
-//     try {
-//         $query = "SELECT * FROM users";
-//         $query = $db->prepare($query);
-//         $query->execute();
-//         return $query->fetchAll();
-//     } catch (\Exception $e) {
-//         throw $e;
-//     }
-// }
 function findUserByUsername($username) {
     global $db;
 
@@ -51,7 +39,7 @@ function createUser($username, $password)
     global $db;
 
     try {
-        $query = "INSERT INTO users (username, password, role_id) VALUES (:username, :password, 2)";
+        $query = "INSERT INTO users (username, password) VALUES (:username, :password)";
         $query = $db->prepare($query);
         $query->bindParam(':username', $username);
         $query->bindParam(':password', $password);
